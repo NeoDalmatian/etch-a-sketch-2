@@ -20,6 +20,12 @@ main {
   height: 500px;
   border: #FFC745 2px solid;
   box-shadow: -3px 3px #d0a339;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.canvas div {
+  background-color: #cef6f4;
 }
 
 nav {
