@@ -24,10 +24,6 @@ main {
   flex-wrap: wrap;
 }
 
-.canvas div {
-  background-color: #cef6f4;
-}
-
 nav {
   display: flex;
   flex-direction: column;
