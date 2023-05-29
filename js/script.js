@@ -1,8 +1,13 @@
 const canvas = document.querySelector(".canvas");
 const canvasSizeButton = document.querySelector(".canvasSize");
 const colorSelector = document.querySelector("#colorSelector");
+const eraser = document.querySelector(".eraser");
 
 let selectedColor = "black"
+
+eraser.addEventListener("click", () => {
+  selectedColor = "#cef6f4";
+})
 
 // takes input from color input and puts it in color function
 colorSelector.addEventListener("input", (e) => {
