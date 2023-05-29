@@ -11,7 +11,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 
 .canvas {
@@ -31,6 +31,7 @@ nav {
   flex-direction: column;
   height: 460px;
   gap: 20px;
+  align-items: flex-start;
 }
 
 .canvasSize {
@@ -51,4 +52,41 @@ nav button {
 
 nav button:hover {
   background-color: #006261;
+}
+
+.color {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#colorSelector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 60px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+}
+
+#colorSelector::-webkit-color-swatch {
+  border-radius: 50%;
+  border: #FFC745 2px solid;
+  box-shadow: -3px 3px #d0a339;
+}
+
+#colorSelector::-moz-color-swatch {
+  border-radius: 50%;
+  border: #FFC745 2px solid;
+  box-shadow: -3px 3px #d0a339;
+}
+
+#indicator {
+  width: 65px;
+}
+
+#indicator:hover {
+  background-color: #007A78;
 }

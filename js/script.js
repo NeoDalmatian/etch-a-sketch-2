@@ -1,5 +1,13 @@
 const canvas = document.querySelector(".canvas");
 const canvasSizeButton = document.querySelector(".canvasSize");
+const colorSelector = document.querySelector("#colorSelector");
+
+let selectedColor = "black"
+
+// takes input from color input and puts it in color function
+colorSelector.addEventListener("input", (e) => {
+  selectedColor = e.target.value;
+})
 
 canvasSizeButton.addEventListener("click", () => {
   // Makes canvas with argument being determined by prompt
@@ -19,7 +27,7 @@ function andMouseDown (e) {
 
 // Function that colors pixels
 function color (e) {
-  e.target.style.backgroundColor = "black";
+  e.target.style.backgroundColor = `${selectedColor}`;
 }
 
 // Creates "pixels" in canvas, parameter is number of pixels in row/column
