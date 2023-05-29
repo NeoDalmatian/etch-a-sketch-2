@@ -2,25 +2,38 @@ const canvas = document.querySelector(".canvas");
 const canvasSizeButton = document.querySelector(".canvasSize");
 const colorSelector = document.querySelector("#colorSelector");
 const eraser = document.querySelector(".eraser");
+const random = document.querySelector(".random");
 
 let selectedColor = "black"
+let randomToggle = false;
 
+// Toggles random color combination
+random.addEventListener("click", () => {
+  randomToggle = true;
+})
+
+// Puts default background color to color function
 eraser.addEventListener("click", () => {
+  randomToggle = false;
   selectedColor = "#cef6f4";
 })
 
-// takes input from color input and puts it in color function
+// Takes input from color input and puts it in color function
 colorSelector.addEventListener("input", (e) => {
+  randomToggle = false;
   selectedColor = e.target.value;
 })
 
+// Makes new canvas with custom size
 canvasSizeButton.addEventListener("click", () => {
   // Makes canvas with argument being determined by prompt
   canvasMaker(prompt("Please enter number between 1 and 100"));
 });
 
-// Makes default canvas size 16x16
-canvasMaker(16);
+// Generates random number from 1 to 255 for random rgb color selection
+function randomColor () {
+  return Math.floor(Math.random() * 256)
+}
 
 // Function that is checking if mouse is down (used with mousemove)
 function andMouseDown (e) {
@@ -32,13 +45,19 @@ function andMouseDown (e) {
 
 // Function that colors pixels
 function color (e) {
-  e.target.style.backgroundColor = `${selectedColor}`;
+  if (randomToggle) {
+    e.target.style.backgroundColor =
+    `rgb( ${randomColor()}, ${randomColor()}, ${randomColor()})`;
+  } else {
+    e.target.style.backgroundColor = `${selectedColor}`;
+  }
 }
 
 // Creates "pixels" in canvas, parameter is number of pixels in row/column
 function canvasMaker (n) {
   if (n > 0 && n <= 100) {
-    canvasEraser();
+    // Erase all elements/"pixels" in canvas before making new one
+    canvas.replaceChildren();
     // Creates, alters and appends "pixels" in canvas (number of them is n x n)
     for (let i = 0; i < (n * n); i++) {
       let pixel = document.createElement("div");
@@ -52,8 +71,5 @@ function canvasMaker (n) {
   }
 }
 
-// Removes all content from canvas with replaceChildren() API because it is 
-// faster than innerHTML and simpler than loop to remove all children one by one.
-function canvasEraser () {
-  canvas.replaceChildren();
-}
+// Makes default canvas size 16x16
+canvasMaker(16);
